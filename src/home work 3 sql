@@ -1,0 +1,27 @@
+--4. Эн кымбат эки продукту алыныз
+--5. Баасы минимальный болгон продуктун атын алыныз
+create table products (
+    id serial primary key,
+    product_name varchar(30) not null,
+    manufacturer varchar(20) not null,
+    product_count int default 0,
+    price numeric,
+    discount varchar(20)
+);
+insert into products(product_name, manufacturer, product_count, price, discount)
+values ('iPhone X', 'Apple', 2, 71000, 'non'),
+       ('iPhone 8', 'Apple', 3, 56000, '-15%'),
+       ('Galaxy S9', 'Samsung', 6, 56000, 'non'),
+       ('Galaxy S8 Plus', 'Samsung', 2, 46000, '-10%'),
+       ('Desire 12', 'HTC', 3, 26000, '-20%');
+
+select * from products where manufacturer != 'HTC';
+select * from products where manufacturer = 'Apple' and price < 75000;
+select * from products where price >= 46000;
+select * from products order by price desc;
+select sum(price) from products;
+select * from products where product_count <= 2;
+select * from products where discount != 'non';
+select * from products where discount = 'non';
+select * from products order by price desc limit 2;
+select product_name from products order by price limit 1;
